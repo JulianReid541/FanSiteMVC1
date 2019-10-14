@@ -7,8 +7,10 @@ namespace georgecarlinwebsite.Models
 {
     public class Story
     {
-        public string Name { get; set; }
-
+        private List<User> users = new List<User>();
+        
         public string UserStory { get; set; }
+
+        public List<User> Users { get { return users; } }
     }
 }

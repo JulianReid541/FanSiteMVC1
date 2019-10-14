@@ -10,6 +10,24 @@ namespace georgecarlinwebsite.Controllers
 {
     public class HomeController : Controller
     {
+        Story story;    
+        
+        public HomeController()
+        {
+            if (Repository.Stories.Count == 0)
+            {
+                story = new Story()
+                {
+                    UserStory = "He was Cool"
+                };
+                story.Users.Add(new User
+                {
+                    Name = "James Madison"
+                }
+                );
+                Repository.AddStory(story);
+            }
+        }
         public IActionResult Index()
         {
             return View();
@@ -27,10 +45,13 @@ namespace georgecarlinwebsite.Controllers
         }
 
         [HttpPost]
-        public ViewResult Stories(Story s)
+        public RedirectToActionResult Stories(string s, string name)
         {
-            Repository.AddStory(s);
-            return View();
+            story = new Story();
+            story.UserStory = s;
+            story.Users.Add(new User() { Name = name });
+            Repository.AddStory(story);
+            return RedirectToAction("StoryList");
         }
 
         public IActionResult InfoOne()
@@ -45,7 +66,8 @@ namespace georgecarlinwebsite.Controllers
 
         public ViewResult StoryList()
         {
-            return View(Repository.Stories);
+            List<Story> stories = Repository.Stories;
+            return View(stories);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

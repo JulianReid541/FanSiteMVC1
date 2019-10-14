@@ -1,26 +1,20 @@
-﻿@model georgecarlinwebsite.Models.Story
+﻿
 @{
     ViewData["Title"] = "Stories";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's Stories.</p>
+<p>WRITE A STORY</p>
 <div>
     <form method="post">
-        <div class="form-group">
-            <label asp-for="Name">Your Name</label>
-            <input class="form-control" asp-for="Name" />
-        </div>
-        <div class="form-group">
-            <label class="form-control" asp-for="UserStory">Enter Story here</label>
-            <textarea asp-for="UserStory"></textarea>
-        </div>
-        <div class="text-center">
-            <button type="submit">
-                Submit Story
-            </button>
-        </div>
+        <label for="Name">Name</label>
+        <input name="Name" /><br />
+        <label for="s">Story</label>
+        <textarea name="s"></textarea>
+        <label for="s" /><br />      
+        <input type="submit" value="Enter" />
     </form>
-
+    <br />
+    <br />
     Click <a class="nav-link" asp-action="StoryList">here</a> to see other stories!
 </div>
