@@ -1,0 +1,26 @@
+﻿@model IEnumerable<georgecarlinwebsite.Models.Story>
+
+@{
+    ViewData["Title"] = "Fan Stories";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h2>Here is a list of fan stories</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Story</th>           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (georgecarlinwebsite.Models.Story s in Model)
+        {
+            <tr>
+                <td>@s.Name</td>
+                <td>@s.UserStory</td>            
+            </tr>
+        }
+    </tbody>
+</table>

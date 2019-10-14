@@ -20,12 +20,16 @@ namespace georgecarlinwebsite.Controllers
             return View();
         }
 
-        public IActionResult Stories()
+        [HttpGet]
+        public ViewResult Stories()
         {
             return View();
         }
-        public IActionResult Sources()
+
+        [HttpPost]
+        public ViewResult Stories(Story s)
         {
+            Repository.AddStory(s);
             return View();
         }
 
@@ -37,6 +41,11 @@ namespace georgecarlinwebsite.Controllers
         public IActionResult InfoTwo()
         {
             return View();
+        }
+
+        public ViewResult StoryList()
+        {
+            return View(Repository.Stories);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
