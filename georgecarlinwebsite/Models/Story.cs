@@ -11,6 +11,7 @@ namespace georgecarlinwebsite.Models
         private List<Comment> comments = new List<Comment>();
         
         public string UserStory { get; set; }
+        public string Title { get; set; }
 
         public List<User> Users { get { return users; } }
 

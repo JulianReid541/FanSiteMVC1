@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace georgecarlinwebsite.Models
 {
-    public class Repository
+    public static class Repository
     {
         private static List<Story> stories = new List<Story>();
         
@@ -14,6 +14,12 @@ namespace georgecarlinwebsite.Models
         public static void AddStory(Story story)
         {
             stories.Add(story);
+        }
+
+        public static Story GetStoryByTitle(string title)
+        {
+            Story story = stories.Find(s => s.Title == title);
+            return story;
         }
     }
 }
