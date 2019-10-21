@@ -13,6 +13,9 @@ namespace georgecarlinwebsite.Controllers
         Story story1;
         Story story2;
         Story story3;
+        Book book1;
+        Book book2;
+        Book book3;
         
         public HomeController()
         {
@@ -52,6 +55,42 @@ namespace georgecarlinwebsite.Controllers
                 });
                 Repository.AddStory(story3);
             }
+
+            if (Repository.Books.Count == 0)
+            {
+                book1 = new Book()
+                {
+                    Title = "Brain Droppings",
+                    PubDate = new DateTime(1997, 5, 17)
+                };
+                book1.Authors.Add(new Author
+                {
+                    Name = "George Carlin"
+                });
+                Repository.Books.Add(book1);
+
+                book2 = new Book()
+                {
+                    Title = "Last Words",
+                    PubDate = new DateTime(2009, 11, 10)
+                };
+                book2.Authors.Add(new Author
+                {
+                    Name = "George Carlin"
+                });
+                Repository.Books.Add(book2);
+
+                book3 = new Book()
+                {
+                    Title = "When Will Jesus Bring the Pork Chops?",
+                    PubDate = new DateTime(2004, 10, 1)
+                };
+                book3.Authors.Add(new Author
+                {
+                    Name = "George Carlin"
+                });
+                Repository.Books.Add(book3);
+            }
         }
         public IActionResult Index()
         {
@@ -85,12 +124,14 @@ namespace georgecarlinwebsite.Controllers
             return RedirectToAction("StoryList");
         }
 
-        public IActionResult InfoOne()
+        public IActionResult Books()
         {
-            return View();
+            List<Book> books = Repository.Books;
+            books.Sort((b1, b2) => string.Compare(b1.Title, b2.Title));
+            return View(books);
         }
 
-        public IActionResult InfoTwo()
+        public IActionResult Links()
         {
             return View();
         }

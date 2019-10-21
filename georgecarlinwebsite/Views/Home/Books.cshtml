@@ -1,0 +1,15 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Books";
+}
+<h1>@ViewData["Title"]</h1>
+
+<body>
+    @foreach (Book b in Model)
+    {
+        <h3>@b.Title</h3>
+        @b.Authors[0].Name <br />
+        @b.PubDate
+        <br />      
+    }
+</body>
