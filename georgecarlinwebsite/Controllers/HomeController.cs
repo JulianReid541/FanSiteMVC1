@@ -64,6 +64,20 @@ namespace georgecarlinwebsite.Controllers
             return View();
         }
 
+        public IActionResult AddComment(string title)
+        {
+            return View("AddComment", title);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddComment(string commenttext, string commenter)
+        {
+            story.Comments.Add(new Comment() {
+                Commenter = new User() { Name = commenter },
+                CommentText = commenttext });
+            return RedirectToAction("StoryList");
+        }
+
         public ViewResult StoryList()
         {
             List<Story> stories = Repository.Stories;

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace georgecarlinwebsite.Models
-{
+{      
     public class Comment
     {
-    }
+        public string CommentText { get; set; }
+        public User Commenter { get; set; }      
+    }    
 }

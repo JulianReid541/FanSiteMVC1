@@ -12,6 +12,16 @@
         {
             
                 @s.Users[0].Name <br />
-                @s.UserStory <br />         
+                @s.UserStory <br />   
+                
+                @if (s.Comments.Count > 0)
+                {
+                    <h3>COMMENTS</h3>
+                    @foreach (Comment c in s.Comments)
+                    {
+                        @c.CommentText <br />
+                    }
+                }
+                <a asp-action="AddComment" asp-route-title ="s.Users[0].Name">Add a comment</a>
         }  
 </body>
