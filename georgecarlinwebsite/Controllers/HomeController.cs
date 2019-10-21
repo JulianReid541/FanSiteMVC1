@@ -10,7 +10,7 @@ namespace georgecarlinwebsite.Controllers
 {
     public class HomeController : Controller
     {
-        Story story;
+        Story story1;
         Story story2;
         Story story3;
         
@@ -18,17 +18,17 @@ namespace georgecarlinwebsite.Controllers
         {
             if (Repository.Stories.Count == 0)
             {
-                story = new Story()
+                story1 = new Story()
                 {
                     Title = "Awesome dude",
                     UserStory = "He was Cool"
                 };
-                story.Users.Add(new User
+                story1.Users.Add(new User
                 {
                     Name = "James Madison"
                 }
                 );
-                Repository.AddStory(story);
+                Repository.AddStory(story1);
 
                 story2 = new Story()
                 {
@@ -63,6 +63,11 @@ namespace georgecarlinwebsite.Controllers
             return View();
         }
 
+        public IActionResult Sources()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ViewResult Stories()
         {
@@ -72,7 +77,7 @@ namespace georgecarlinwebsite.Controllers
         [HttpPost]
         public RedirectToActionResult Stories(string s, string name, string title)
         {
-            story = new Story();
+            Story story = new Story();
             story.Title = title;
             story.UserStory = s;
             story.Users.Add(new User() { Name = name });
