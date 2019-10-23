@@ -2,6 +2,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <p>Stub for HOME PAGE</p>
-</div>
+<body>
+    <div class="text-center">
+        <h1 class="jumbotron-fluid">@ViewBag.welcome</h1>
+        <p>THE DATE IS: @ViewData["Date"]</p>
+        <p>THE TIME IS: @ViewData["Time"]</p>
+    </div>
+</body>
+

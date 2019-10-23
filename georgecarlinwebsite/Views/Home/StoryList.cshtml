@@ -1,31 +1,40 @@
 ﻿@model List<Story>
 
 @{
+    Layout = "_VerticalLayout";
     ViewData["Title"] = "Fan Stories";
 }
 
 <h1>@ViewData["Title"]</h1>
 
-<h2>Here is a list of fan stories</h2>
-<body>    
-        @foreach (Story s in Model)
-        {
-                <h3>@s.Title</h3>
+<body>
+    @foreach (Story s in Model)
+     {
+        <div class="card">
+            <div class="card-header">@s.Title</div>
+            <div class="card-body">
                 @s.Users[0].Name <br />
                 @s.UserStory
-                
-                @if (s.Comments.Count > 0)
-                {
-                    <h3>COMMENTS</h3>
+            </div>
+
+            @if (s.Comments.Count > 0)
+             {
+                <div class="card-footer">
+                    <p>COMMENTS</p>
                     @foreach (Comment c in s.Comments)
                     {
-                        @c.Commenter.Name<br/>
+                        @c.Commenter.Name<br />
                         @c.CommentText <br />
                     }
-                }
-                <br />
-                <a asp-action="AddComment" asp-route-title="@s.Title">Add a comment</a>
+                </div>
+             }
+            <br />
+            <a asp-action="AddComment" asp-route-title="@s.Title">Comment</a>
+            <br />
+        </div>
+     }
 
-                <br />             
-        }  
+    <p>HAVE A STORY TO TELL?<br />
+       <a asp-action="Stories">CLICK HERE</a>
+    </p>
 </body>

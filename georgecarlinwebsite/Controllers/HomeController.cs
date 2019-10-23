@@ -94,6 +94,9 @@ namespace georgecarlinwebsite.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.welcome = "WELCOME";
+            ViewData["Date"] = DateTime.Now.Date.ToString("MM-dd-yyyy");
+            ViewData["Time"] = DateTime.Now.ToString("t");
             return View();
         }
 
@@ -128,6 +131,8 @@ namespace georgecarlinwebsite.Controllers
         {
             List<Book> books = Repository.Books;
             books.Sort((b1, b2) => string.Compare(b1.Title, b2.Title));
+            ViewData["newestBook"] = books[books.Count - 1].Title;
+            ViewBag.bookCount = books.Count;
             return View(books);
         }
 

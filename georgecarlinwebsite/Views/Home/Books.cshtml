@@ -1,15 +1,29 @@
 ﻿@model List<Book>
 @{
+    Layout = "_VerticalLayout";
     ViewData["Title"] = "Books";
 }
 <h1>@ViewData["Title"]</h1>
 
 <body>
+    Book Total: @ViewBag.bookCount
+    <br />
+
+    Out Newest BOOK: @ViewData["newestBook"]
+    
+    <br /> 
+    <br />
     @foreach (Book b in Model)
-    {
-        <h3>@b.Title</h3>
-        @b.Authors[0].Name <br />
-        @b.PubDate
-        <br />      
-    }
+     {
+        <div class="card">
+            <div class="card">
+                <div class="card-header">
+                @b.Title
+                </div>
+                    Author: @b.Authors[0].Name <br />
+                    Published Date: @b.PubDate<br />
+                <br />
+            </div>            
+        </div>
+     }
 </body>
