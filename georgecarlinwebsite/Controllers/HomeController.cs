@@ -102,7 +102,7 @@ namespace georgecarlinwebsite.Controllers
 
         public IActionResult History()
         {
-            return View();
+            return Content("This is content");
         }
 
         public IActionResult Sources()
