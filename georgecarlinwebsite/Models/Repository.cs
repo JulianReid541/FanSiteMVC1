@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using georgecarlinwebsite.Models;
 
 namespace georgecarlinwebsite.Models
 {
     public class Repository : IRepository
     {
-        private static List<Story> stories = new List<Story>();
+        private ApplicationDbContext context;      
         private static List<Book> books = new List<Book>();
 
-        public List<Story> Stories { get { return stories; } }
+        public Repository(ApplicationDbContext appDbContext)
+        {
+            context = appDbContext;
+        }
+        public List<Story> Stories { get { return context.Stories.Include("Users").Include("Comments").ToList(); } }
         public List<Book> Books { get { return books; } }
 
         public Repository()
@@ -23,7 +29,8 @@ namespace georgecarlinwebsite.Models
 
         public void AddStory(Story story)
         {
-            stories.Add(story);
+            context.Stories.Add(story);
+            context.SaveChanges();
         }
 
         public void AddBook(Book book)
@@ -39,7 +46,8 @@ namespace georgecarlinwebsite.Models
 
         public Story GetStoryByTitle(string title)
         {
-            Story story = stories.Find(s => s.Title == title);
+            Story story;
+            story = context.Stories.First(s => s.Title == title);
             return story;
         }
 

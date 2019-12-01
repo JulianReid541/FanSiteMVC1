@@ -10,6 +10,7 @@ namespace georgecarlinwebsite.Models
         private List<User> users = new List<User>();
         private List<Comment> comments = new List<Comment>();
         
+        public int StoryID { get; set; }
         public string UserStory { get; set; }
         public string Title { get; set; }
 

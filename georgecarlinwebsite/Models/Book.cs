@@ -7,6 +7,7 @@ namespace georgecarlinwebsite.Models
 {
     public class Book
     {
+        public int BookID { get; set; }
         private List<Author> authors = new List<Author>();
 
         public string Title { get; set; }

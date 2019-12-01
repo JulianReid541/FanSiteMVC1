@@ -7,6 +7,7 @@ namespace georgecarlinwebsite.Models
 {      
     public class Comment
     {
+        public int CommentID { get; set; }
         public string CommentText { get; set; }
         public User Commenter { get; set; }      
     }    
