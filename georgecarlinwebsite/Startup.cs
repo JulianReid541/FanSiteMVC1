@@ -39,7 +39,7 @@ namespace georgecarlinwebsite
             services.AddTransient<IRepository, Repository>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-                Configuration["Data:georgecarlinwebsite:ConnectionString"]));
+                Configuration["ConnectionStrings:MsSqlConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
