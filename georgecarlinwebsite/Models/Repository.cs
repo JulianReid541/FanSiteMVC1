@@ -39,9 +39,11 @@ namespace georgecarlinwebsite.Models
         }
 
         public void AddComment(Story story, Comment comment)
-        {
+        {           
             Story theStory = context.Stories.First<Story>(story1 => story1.StoryID == story.StoryID);
-            theStory.Comments.Add(comment);
+            context.Users.Add(comment.Commenter);
+            context.Comments.Add(comment);
+            theStory.Comments.Add(comment);          
             context.Stories.Update(story);
             context.SaveChanges();
         }
