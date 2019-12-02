@@ -28,6 +28,12 @@ namespace georgecarlinwebsite.Models
             return story;
         }
 
+        public void AddComment(Story s, Comment c)
+        {
+            Story theStory = stories.First<Story>(story => story.StoryID == s.StoryID);
+            theStory.Comments.Add(c);
+        }
+
         public Book GetBookByTitle(string title)
         {
             Book book = books.Find(b => b.Title == title);

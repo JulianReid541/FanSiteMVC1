@@ -38,6 +38,14 @@ namespace georgecarlinwebsite.Models
             books.Add(book);
         }
 
+        public void AddComment(Story story, Comment comment)
+        {
+            Story theStory = context.Stories.First<Story>(story1 => story1.StoryID == story.StoryID);
+            theStory.Comments.Add(comment);
+            context.Stories.Update(story);
+            context.SaveChanges();
+        }
+
         public Book GetBookByTitle(string title)
         {
             Book book = books.Find(b => b.Title == title);

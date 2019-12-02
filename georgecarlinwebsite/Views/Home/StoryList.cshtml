@@ -21,9 +21,8 @@
              {
                 <div class="card-footer">
                     <p>COMMENTS</p>
-                    @foreach (Comment c in s.Comments)
-                    {
-                        @c.Commenter.Name<br />
+                    @foreach (var c in s.Comments)
+                    {                           
                         @c.CommentText <br />
                         <br />
                     }

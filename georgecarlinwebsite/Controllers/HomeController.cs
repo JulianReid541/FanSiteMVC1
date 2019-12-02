@@ -74,9 +74,10 @@ namespace georgecarlinwebsite.Controllers
         public RedirectToActionResult AddComment(string title, string commenttext, string commenter)
         {
             Story story = Repository.GetStoryByTitle(title);
-            story.Comments.Add(new Comment() {
+
+            Repository.AddComment(story, new Comment() {
                 Commenter = new User() { Name = commenter },
-                CommentText = commenttext });
+                CommentText = commenttext });           
             return RedirectToAction("StoryList");
         }
 

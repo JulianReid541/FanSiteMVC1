@@ -11,6 +11,7 @@ namespace georgecarlinwebsite.Models
         List<Book> Books { get; }
         void AddBook(Book book);
         void AddStory(Story story);
+        void AddComment(Story story, Comment comment);
         Story GetStoryByTitle(string title);
         Book GetBookByTitle(string title);
     }
